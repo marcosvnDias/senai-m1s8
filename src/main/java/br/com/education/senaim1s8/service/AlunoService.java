@@ -11,7 +11,9 @@ public class AlunoService {
         return AlunoModel.getAlunos();
     }
 
-    public void cadastrar (AlunoModel aluno) {
+    public AlunoModel cadastrar (AlunoModel aluno) {
         AlunoModel.inserir(aluno);
+        return aluno;
     }
+
 }

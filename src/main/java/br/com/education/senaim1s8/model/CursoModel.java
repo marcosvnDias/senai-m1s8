@@ -18,7 +18,7 @@ public class CursoModel {
         return idGeral++;
     }
 
-    public static List<CursoModel> getAlunos () {
+    public static List<CursoModel> getCursos () {
         return cursos;
     }
 

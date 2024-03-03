@@ -11,7 +11,8 @@ public class CursoService {
         return CursoModel.getAlunos();
     }
 
-    public void cadastrar (CursoModel curso) {
+    public CursoModel cadastrar (CursoModel curso) {
         CursoModel.inserir(curso);
+        return curso;
     }
 }
