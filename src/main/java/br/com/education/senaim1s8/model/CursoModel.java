@@ -12,19 +12,29 @@ public class CursoModel {
     private Integer id;
     @Setter private String nome;
     @Setter private String descricao;
-    private static List<CursoModel> cursos = new ArrayList<>();
+    @Getter private static final List<CursoModel> cursos = new ArrayList<>();
+    @Getter private final List<AlunoModel> alunosMatriculados = new ArrayList<>();
 
     public static Integer proximoId () {
         return idGeral++;
     }
 
-    public static List<CursoModel> getCursos () {
-        return cursos;
+    public static CursoModel buscarPorId (Integer id) throws Exception {
+        for (CursoModel curso : cursos) {
+            if (curso.getId().equals(id)) {
+                return curso;
+            }
+        }
+        throw new Exception("Curso não encontrado");
     }
 
     public static CursoModel inserir (CursoModel curso) {
         curso.id = proximoId();
         cursos.add(curso);
         return curso;
+    }
+
+    public static void inserir (AlunoModel aluno, CursoModel curso) {
+        curso.getAlunosMatriculados().add(aluno);
     }
 }

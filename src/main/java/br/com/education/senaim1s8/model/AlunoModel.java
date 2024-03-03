@@ -1,5 +1,6 @@
 package br.com.education.senaim1s8.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,20 +14,25 @@ public class AlunoModel {
     private Integer id;
     @Setter private String nome;
     @Setter private LocalDate dataNascimento;
-    private static List<AlunoModel> alunos = new ArrayList<>();
+    @Getter private static final List<AlunoModel> alunos = new ArrayList<>();
 
     public static Integer proximoId () {
         return idGeral++;
-    }
-
-    public static List<AlunoModel> getAlunos () {
-        return alunos;
     }
 
     public static AlunoModel inserir (AlunoModel aluno) {
         aluno.id = proximoId();
         alunos.add(aluno);
         return aluno;
+    }
+
+    public static AlunoModel buscarPorId (Integer id) throws Exception {
+        for (AlunoModel aluno : alunos) {
+            if (aluno.getId().equals(id)) {
+                return aluno;
+            }
+        }
+        throw new Exception("Curso não encontrado");
     }
 
 }
