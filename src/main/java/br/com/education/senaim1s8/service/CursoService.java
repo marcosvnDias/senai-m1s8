@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class CursoService {
     public List<CursoModel> listarCursos () {
-        return CursoModel.getAlunos();
+        return CursoModel.getCursos();
     }
 
     public CursoModel cadastrar (CursoModel curso) {
